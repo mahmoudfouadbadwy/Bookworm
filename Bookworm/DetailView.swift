@@ -9,11 +9,11 @@ import SwiftUI
 import CoreData
 
 struct DetailView: View {
-    //MARK:- wrapper attributs
+    //MARK: - wrapper attributs
     @Environment(\.managedObjectContext) var context
     @Environment(\.presentationMode) var presentationMode
     
-    //MARK:- Properties
+    //MARK: - Properties
     let book: Book
     @State private var showingDeleteAlert = false
     private var bookDate: String {

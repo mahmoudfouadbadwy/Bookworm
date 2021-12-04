@@ -9,7 +9,7 @@ import SwiftUI
 import CoreData
 
 struct AddBookView: View {
-    //MARK:- Wrapper attributes
+    //MARK: - Wrapper attributes
     @Environment(\.managedObjectContext) var context
     @Environment(\.presentationMode) var presentationMode
     
@@ -29,7 +29,7 @@ struct AddBookView: View {
                 Section {
                     TextField("Name of book", text: $title)
                     TextField("Author's name", text: $author)
-                    Picker("Genre", selection: $genre){
+                    Picker("Genre", selection: $genre) {
                         ForEach(Genre.allCases, id:\.self) {
                             Text($0.text)
                         }
