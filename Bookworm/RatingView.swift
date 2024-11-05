@@ -9,12 +9,12 @@ import SwiftUI
 
 struct RatingView: View {
     @Binding var rating: Int
-    var label = ""
-    var maximumRating = 5
-    var offImage: Image?
-    var onImage = Image(systemName: "star.fill")
-    var offColor = Color.gray
-    var onColor = Color.yellow
+    private var label = ""
+    
+    init(rating: Binding<Int>, label: String = "") {
+        self._rating = rating
+        self.label = label
+    }
     
     var body: some View {
         HStack {
@@ -22,18 +22,14 @@ struct RatingView: View {
                 Text(label)
             }
             
-            ForEach(1..<maximumRating + 1) { number in
-                self.image(for: number)
-                    .foregroundColor(number > self.rating ? self.offColor : self.onColor)
+            ForEach(1...5 , id: \.self) { number in
+                Image(systemName: "star.fill")
+                    .foregroundColor(number > self.rating ?  Color.gray : Color.yellow)
                     .onTapGesture {
                         self.rating = number
                     }
             }
         }
-    }
-    
-    func image(for number: Int) -> Image {
-        number > rating ? offImage ?? onImage : onImage
     }
 }
 
